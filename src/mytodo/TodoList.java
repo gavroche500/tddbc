@@ -12,6 +12,10 @@ public class TodoList {
 	}
 
 	public void addTodo(String todo) {
-		this.todo.add(new Todo());
+		this.todo.add(new Todo(todo));
+	}
+
+	public String showAll() {
+		return todo.get(0).show();
 	}
 }
