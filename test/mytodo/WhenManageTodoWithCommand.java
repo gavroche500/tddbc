@@ -3,6 +3,7 @@ package mytodo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -24,16 +25,17 @@ public class WhenManageTodoWithCommand {
 	}
 
 	@Test
-	public void 初期状態でaaaというTODOを1件追加して一覧を見るとaaaと表示されるべき() {
-		TodoList todoList = new TodoList();
-		todoList.addTodo("aaa");
-		assertThat(todoList.showAll(), is("aaa"));
+	public void 初期状態でaaaというTODOを1件追加して最後の1件を見るとaaaと表示されるべき() {
+		初期状態で複数のTODOを追加して最後の1件を見る(Arrays.asList("1"));
+		初期状態で複数のTODOを追加して最後の1件を見る(Arrays.asList("1", "2"));
 	}
 
-	@Test
-	public void 初期状態でbbbというTODOを1件追加して一覧を見るとbbbと表示されるべき() {
+
+	private void 初期状態で複数のTODOを追加して最後の1件を見る(List<String> todos) {
 		TodoList todoList = new TodoList();
-		todoList.addTodo("bbb");
-		assertThat(todoList.showAll(), is("bbb"));
+		for (String todo : todos) {
+			todoList.addTodo(todo);
+		}
+		assertThat(todoList.showLast(), is(todos.get(todos.size() - 1)));
 	}
 }

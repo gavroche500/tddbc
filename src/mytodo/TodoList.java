@@ -15,7 +15,7 @@ public class TodoList {
 		this.todo.add(new Todo(todo));
 	}
 
-	public String showAll() {
-		return todo.get(0).show();
+	public String showLast() {
+		return todo.get(todo.size() - 1).show();
 	}
 }
