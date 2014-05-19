@@ -18,4 +18,9 @@ public class TodoList {
 	public String showLast() {
 		return todo.get(todo.size() - 1).show();
 	}
+
+	public void delLastTodo(TodoList todoList) {
+		// TODO 自動生成されたメソッド・スタブ
+		this.todo.remove((todo.size()) - 1);
+	}
 }

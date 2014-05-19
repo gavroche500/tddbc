@@ -29,13 +29,21 @@ public class WhenManageTodoWithCommand {
 		初期状態で複数のTODOを追加して最後の1件を見る(Arrays.asList("1"));
 		初期状態で複数のTODOを追加して最後の1件を見る(Arrays.asList("1", "2"));
 	}
-
-
-	private void 初期状態で複数のTODOを追加して最後の1件を見る(List<String> todos) {
+	
+	public void 初期状態で複数のTODOを追加して最後の1件を見る(List<String> todos) {
 		TodoList todoList = new TodoList();
 		for (String todo : todos) {
 			todoList.addTodo(todo);
 		}
 		assertThat(todoList.showLast(), is(todos.get(todos.size() - 1)));
+	}
+
+	@Test
+	public void 初期状態で2件のTODOを追加して最後の1件を削除すると最初の1件をと表示されるべき() {
+		TodoList todoList = new TodoList();
+		todoList.addTodo("aaa");
+		todoList.addTodo("bbb");
+		todoList.delLastTodo(todoList);
+		assertThat(todoList.showLast() , is("aaa"));
 	}
 }
